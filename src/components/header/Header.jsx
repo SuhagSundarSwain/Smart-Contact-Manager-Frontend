@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { Header_content_section } from "./header_subsections/Header_content_section";
-import { Header_right_section } from "./header_subsections/Header_right_section";
-import { Logo_section } from "./header_subsections/Logo_section";
+import { HeaderContentSection } from "./header_subsections/HeaderContentSection";
+import { HeaderRightSection } from "./header_subsections/HeaderRightSection";
+import { LogoSection } from "./header_subsections/LogoSection";
 
 export const Header = () => {
   const theme = useSelector((store) => store.theme);
@@ -11,11 +11,11 @@ export const Header = () => {
         theme.lightTheme ? "border-bottom" : ""
       }`}
     >
-      <Logo_section />
+      <LogoSection />
 
-      <Header_content_section />
+      <HeaderContentSection />
 
-      <Header_right_section />
+      <HeaderRightSection />
     </header>
   );
 };

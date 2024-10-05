@@ -1,17 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./Header_right_section.module.css";
+import styles from "./HeaderRightSection.module.css";
 import ContrastIcon from "@mui/icons-material/Contrast";
-import { store } from "../../../store/App-store";
 import { themeActions } from "../../../store/themeSlice";
+import { useNavigate } from "react-router-dom";
 
-export const Header_right_section = () => {
+export const HeaderRightSection = () => {
   const button_list = ["Login", "Sign-up"];
-
   const theme = useSelector((store) => store.theme);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const changeTheme = () => {
     dispatch(themeActions.toggleTheme());
   };
+
   return (
     <div className={`col-md-4 ${styles.right_section}`}>
       <button
@@ -30,6 +32,7 @@ export const Header_right_section = () => {
           key={buttonName}
           type="button"
           className={`btn ${theme.lightTheme ? "btn-dark" : "btn-primary"}`}
+          onClick={() => navigate(`/${buttonName.toLowerCase()}`)}
         >
           {buttonName}
         </button>
