@@ -32,7 +32,7 @@ export const HeaderRightSection = () => {
           key={buttonName}
           type="button"
           className={`btn ${theme.lightTheme ? "btn-dark" : "btn-primary"}`}
-          onClick={() => navigate(`/${buttonName.toLowerCase()}`)}
+          onClick={() => navigate(`/auth/${buttonName.toLowerCase()}`)}
         >
           {buttonName}
         </button>

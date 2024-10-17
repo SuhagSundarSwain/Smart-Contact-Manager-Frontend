@@ -1,0 +1,36 @@
+.form_title {
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  .form_description {
+    color: rgb(174, 174, 174);
+  }
+  .textfield {
+    width: 60%;
+    border: 1px solid;
+    height: 40px;
+    border-radius: 10px;
+  }
+  
+  .textfield_light {
+    background-color: rgb(250, 250, 250);
+  }
+  .textfield_dark {
+    background-color: #374151;
+  }
+  .signup_form_light:hover .textfield_light {
+    background-color: white;
+  }
+  .signup_form_dark:hover .textfield_dark {
+    background-color: #344350;
+  }
+  
+  .button_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  
