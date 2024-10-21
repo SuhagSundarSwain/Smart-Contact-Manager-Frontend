@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
 import store from "./store/App-store";
 import { RouterProvider } from "react-router-dom";
-import { route } from "./router/router";
+import { route } from "./router/route";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

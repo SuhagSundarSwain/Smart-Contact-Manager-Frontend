@@ -8,12 +8,13 @@
   background-color: #111827;
   color: white;
   min-height: 100vh;
+  min-width: 700px;
 }
 
 /* Smooth transition for color and background change */
 .light_theme,
 .dark_theme {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .text_light_theme {

@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
-import styles from "./LoginPage.module.css";
 import { LoginFormContaint } from "./LoginFormContaint";
+import styles from "./LoginPage.module.css";
 
 export const LoginPage = () => {
   const theme = useSelector((store) => store.theme);
+
   return (
     <div className={styles.login_form_section}>
       <div
