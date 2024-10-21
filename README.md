@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# 🌟 Smart Contact Manager 🌟
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **Smart Contact Manager** – a sleek and user-friendly application for managing contacts securely on the cloud. This app provides easy contact management, seamless authentication, and personalized themes to enhance your experience!
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Login & Signup** 🔐: Secure authentication with JWT tokens for user privacy and safety.
+- **Theme Customization** 🎨: Switch between light and dark themes based on your preference.
+- **Contact Management** 📇: Add, view, edit, and delete contacts with ease.
+- **Role-based Access Control** 🛡️: Granular access based on user roles.
+- **OAuth Integration** 🌐: Log in with Google, GitHub, or Facebook for convenience.
 
-### `npm start`
+## 💻 Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React, Redux, Material UI
+- **Backend**: Spring Boot, JWT Authentication
+- **Database**: MySQL
+- **API Communication**: RESTful APIs
+- **Deployment**: Docker, k8s, jenkins, AWS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📸 Screenshots
 
-### `npm test`
+### Light Theme 🌞
+![Light Theme Screenshot](path/to/light-theme-screenshot.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Dark Theme 🌙
+![Dark Theme Screenshot](path/to/dark-theme-screenshot.png)
 
-### `npm run build`
+## 🔧 Setup & Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Frontend Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/smart-contact-manager.git
+   ```
+2. Navigate into the project directory:
+   ```bash
+   cd smart-contact-manager
+   ```
+3. Install frontend dependencies:
+   ```bash
+   npm install
+   ```
+4. Configure environment variables in `.env` file:
+   ```bash
+   REACT_APP_SCM_BACKEND_SERVER=http://your-backend-url
+   ```
+4. Start the app:
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Backend Setup
 
-### `npm run eject`
+To access the backend repository and learn about its setup:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Backend Repo**: [Smart Contact Manager Backend](https://github.com/SuhagSundarSwain/Smart-Contact-Manager-Backend)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🛠️ API Endpoints
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `/login` - Log in with your credentials
+- `/contacts` - Manage your contacts
+- `/setTheme` - Toggle between light and dark themes
+- `/getTheme` - Retrieve the current theme
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### ✨ Contributing
 
-## Learn More
+Feel free to submit pull requests or report issues. Contributions are always welcome!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork the repo
+2. Create your feature branch: `git checkout -b feature/new-feature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/new-feature`
+5. Open a pull request
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 📄 License
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
