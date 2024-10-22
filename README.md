@@ -12,7 +12,7 @@ Welcome to **Smart Contact Manager** – a sleek and user-friendly application f
 
 ## 💻 Tech Stack
 
-- **Frontend**: React, Redux, Material UI
+- **Frontend**: React, Redux, Material UI, Bootstrap
 - **Backend**: Spring Boot, JWT Authentication
 - **Database**: MySQL
 - **API Communication**: RESTful APIs
@@ -21,9 +21,11 @@ Welcome to **Smart Contact Manager** – a sleek and user-friendly application f
 ## 📸 Screenshots
 
 ### Light Theme 🌞
+
 ![Light Theme Screenshot](path/to/light-theme-screenshot.png)
 
 ### Dark Theme 🌙
+
 ![Dark Theme Screenshot](path/to/dark-theme-screenshot.png)
 
 ## 🔧 Setup & Installation
@@ -32,7 +34,7 @@ Welcome to **Smart Contact Manager** – a sleek and user-friendly application f
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/smart-contact-manager.git
+   git clone https://github.com/SuhagSundarSwain/Smart-Contact-Manager-Frontend.git
    ```
 2. Navigate into the project directory:
    ```bash
@@ -44,9 +46,9 @@ Welcome to **Smart Contact Manager** – a sleek and user-friendly application f
    ```
 4. Configure environment variables in `.env` file:
    ```bash
-   REACT_APP_SCM_BACKEND_SERVER=http://your-backend-url
+   REACT_APP_SCM_BACKEND_SERVER=http://<your-backend-url>
    ```
-4. Start the app:
+5. Start the app:
    ```bash
    npm start
    ```
