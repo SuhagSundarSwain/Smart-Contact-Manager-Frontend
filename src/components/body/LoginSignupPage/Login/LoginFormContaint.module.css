@@ -19,6 +19,10 @@
 .textfield_dark {
   background-color: #374151;
 }
+.textfield_dark input {
+  color: white; /* Ensures the input text is white in dark mode */
+}
+
 .login_form_light:hover .textfield_light {
   background-color: white;
 }
@@ -31,4 +35,22 @@
   justify-content: center;
   margin-top: 10px;
   gap: 10px;
+}
+.popup {
+  width: 15%;
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #c43541;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+.progressBar {
+  margin-top: 10px;
 }

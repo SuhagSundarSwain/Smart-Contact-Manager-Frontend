@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import styles from "./LoginFormContaint.module.css";
-import { TextField } from "@mui/material";
+import { TextField, LinearProgress } from "@mui/material";
 
 export const LoginFormContaint = ({ theme }) => {
   const userNameRef = useRef(null);
@@ -8,81 +8,109 @@ export const LoginFormContaint = ({ theme }) => {
 
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [progress, setProgress] = useState(100);
+  const [userNameError, setUserNameError] = useState(undefined);
+  const [passwordError, setPasswordError] = useState(undefined);
+
   let errorTimeout;
 
-  const login = (event) => {
+  const startProgressCountdown = () => {
+    let interval = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress <= 0) {
+          clearInterval(interval);
+          return 0;
+        }
+        return oldProgress - 1.5;
+      });
+    }, 15); // Update every 15ms for smoother progress
+  };
+
+  const handleLogin = async (event) => {
     event.preventDefault();
-    setLoading(true); // Show loading state
+    setLoading(true);
+    setProgress(100);
+
     const userName = userNameRef.current.value;
     const password = passwordRef.current.value;
 
-    fetch(process.env.REACT_APP_SCM_BACKEND_SERVER + "/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userName, password }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          if (response.status === 401) {
-            return response.json().then((errorResponse) => {
-              if (errorResponse.errorType === "INVALID_CREDENTIAL") {
-                setErrorMessage(errorResponse.error);
-                if (errorTimeout) clearTimeout(errorTimeout);
-                errorTimeout = setTimeout(() => {
-                  setErrorMessage("");
-                }, 1500);
-              }
-              throw new Error(errorResponse.errorType || "Unauthorized");
-            });
-          }
-          if (response.status === 400) {
-            return response.json().then((errorResponse) => {
-              if (errorResponse.errorType === "VALIDATION_ERROR") {
-                setErrorMessage(errorResponse.error.password || "Bad Request");
-                if (errorTimeout) clearTimeout(errorTimeout);
-                errorTimeout = setTimeout(() => {
-                  setErrorMessage("");
-                }, 1500);
-              }
-              throw new Error("Bad Request");
-            });
-          }
-          throw new Error("Login Failed");
+    try {
+      const response = await fetch(
+        process.env.REACT_APP_SCM_BACKEND_SERVER + "/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userName, password }),
+          credentials: "include",
         }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Login successful:", data);
-        setErrorMessage("");
-        // Handle login success, store tokens, redirect, etc.
-      })
-      .catch((error) => {
-        console.log(error.message);
-      })
-      .finally(() => {
-        setLoading(false); // Hide loading state
-      });
+      );
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+
+        if (
+          response.status === 401 &&
+          errorResponse.errorType === "INVALID_CREDENTIAL"
+        ) {
+          setErrorMessage(errorResponse.error);
+          setShowPopup(true);
+          startProgressCountdown();
+
+          errorTimeout = setTimeout(() => {
+            setShowPopup(false);
+            setErrorMessage("");
+          }, 1500);
+        }
+
+        if (
+          response.status === 400 &&
+          errorResponse.errorType === "VALIDATION_ERROR"
+        ) {
+          setUserNameError(errorResponse.error.userName);
+          setPasswordError(errorResponse.error.password);
+        }
+
+        throw new Error(errorResponse.errorType || "Unauthorized");
+      }
+
+      const data = await response.json();
+      console.log("Login successful:", data);
+      setErrorMessage("");
+      // Handle successful login actions here (e.g., store tokens, redirect)
+    } catch (error) {
+      console.error(error.message);
+    } finally {
+      setLoading(false);
+      setTimeout(() => {
+        setUserNameError(undefined);
+        setPasswordError(undefined);
+      }, 3000);
+    }
   };
 
   useEffect(() => {
-    return () => {
-      // Clean up timeout when component unmounts to prevent memory leaks
-      if (errorTimeout) clearTimeout(errorTimeout);
-    };
-  }, []);
+    return () => clearTimeout(errorTimeout);
+  }, [errorTimeout]);
 
   return (
     <>
-      {errorMessage && (
-        <div className="alert alert-danger" role="alert">
-          {errorMessage}
+      {showPopup && (
+        <div className={styles.popup}>
+          <p>{errorMessage}</p>
+          <LinearProgress
+            variant="determinate"
+            value={progress}
+            className={styles.progressBar}
+          />
         </div>
       )}
+
       <p className={styles.form_title}>Login Here</p>
       <p className={styles.form_description}>
         Start managing contacts on cloud
       </p>
-      <form onSubmit={login}>
+      <form onSubmit={handleLogin}>
         <TextField
           id="userId-email"
           label="UserId/Email"
@@ -94,7 +122,10 @@ export const LoginFormContaint = ({ theme }) => {
             theme.lightTheme ? styles.textfield_light : styles.textfield_dark
           }`}
           inputRef={userNameRef}
+          error={Boolean(userNameError)}
+          helperText={userNameError}
         />
+
         <TextField
           id="password"
           label="Password"
@@ -106,16 +137,17 @@ export const LoginFormContaint = ({ theme }) => {
             theme.lightTheme ? styles.textfield_light : styles.textfield_dark
           }`}
           inputRef={passwordRef}
+          error={Boolean(passwordError)}
+          helperText={passwordError}
         />
 
-        <br />
         <div className={styles.button_container}>
           <button
             type="submit"
             className={`btn ${theme.lightTheme ? "btn-dark" : "btn-primary"}`}
-            disabled={loading} // Disable button while loading
+            disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"} {/* Show loading state */}
+            {loading ? "Logging in..." : "Login"}
           </button>
           <button type="reset" className="btn btn-danger" disabled={loading}>
             Reset
