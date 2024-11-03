@@ -7,13 +7,14 @@ import { ContactPage } from "../components/body/ContactPage";
 import { LoginPage } from "../components/body/LoginSignupPage/Login/LoginPage";
 import { SignUpPage } from "../components/body/LoginSignupPage/SignUp/SignUpPage";
 import { AuthPage } from "../components/body/LoginSignupPage/AuthPage";
-import { fetchThemeLoader } from "./loader";
+import { combineLoader } from "./loader";
+import LogoutPage from "../components/body/LoginSignupPage/LogoutPage";
 
 export const route = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    loader: fetchThemeLoader,
+    loader:  combineLoader,
     children: [
       { path: "home", element: <HomePage /> },
       { path: "about", element: <AboutPage /> },
@@ -25,6 +26,7 @@ export const route = createBrowserRouter([
         children: [
           { path: "login", element: <LoginPage /> },
           { path: "sign-up", element: <SignUpPage /> },
+          { path: "logout", element: <LogoutPage /> },
         ],
       },
     ],

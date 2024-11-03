@@ -5,7 +5,8 @@ import { themeActions } from "../../../store/themeSlice";
 import { useNavigate } from "react-router-dom";
 
 export const HeaderRightSection = () => {
-  const button_list = ["Login", "Sign-up"];
+  const auth = useSelector((store) => store.auth);
+  const button_list = auth.authStatus ? ["Logout"] : ["Login", "Sign-up"];
   const theme = useSelector((store) => store.theme);
   const dispatch = useDispatch();
   const navigate = useNavigate();

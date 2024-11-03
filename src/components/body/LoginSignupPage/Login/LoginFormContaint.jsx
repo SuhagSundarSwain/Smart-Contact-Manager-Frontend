@@ -1,10 +1,16 @@
 import { useRef, useState, useEffect } from "react";
 import styles from "./LoginFormContaint.module.css";
 import { TextField, LinearProgress } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../../../store/authSlice";
+import { useNavigate } from "react-router-dom";
 
 export const LoginFormContaint = ({ theme }) => {
   const userNameRef = useRef(null);
   const passwordRef = useRef(null);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -13,10 +19,10 @@ export const LoginFormContaint = ({ theme }) => {
   const [userNameError, setUserNameError] = useState(undefined);
   const [passwordError, setPasswordError] = useState(undefined);
 
-  let errorTimeout;
+  const errorTimeout = useRef(null);
 
   const startProgressCountdown = () => {
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress <= 0) {
           clearInterval(interval);
@@ -27,7 +33,7 @@ export const LoginFormContaint = ({ theme }) => {
     }, 15); // Update every 15ms for smoother progress
   };
 
-  const handleLogin = async (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
     setLoading(true);
     setProgress(100);
@@ -35,63 +41,61 @@ export const LoginFormContaint = ({ theme }) => {
     const userName = userNameRef.current.value;
     const password = passwordRef.current.value;
 
-    try {
-      const response = await fetch(
-        process.env.REACT_APP_SCM_BACKEND_SERVER + "/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userName, password }),
-          credentials: "include",
+    fetch(process.env.REACT_APP_SCM_BACKEND_SERVER + "/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userName, password }),
+      credentials: "include",
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          const errorResponse = await response.json();
+          if (
+            response.status === 401 &&
+            errorResponse.errorType === "INVALID_CREDENTIAL"
+          ) {
+            setErrorMessage(errorResponse.error);
+            setShowPopup(true);
+            startProgressCountdown();
+
+            errorTimeout.current = setTimeout(() => {
+              setShowPopup(false);
+              setErrorMessage("");
+            }, 1500);
+          }
+          if (
+            response.status === 400 &&
+            errorResponse.errorType === "VALIDATION_ERROR"
+          ) {
+            setUserNameError(errorResponse.error.userName);
+            setPasswordError(errorResponse.error.password);
+          }
+          throw new Error(errorResponse.errorType || "Unauthorized");
         }
-      );
-
-      if (!response.ok) {
-        const errorResponse = await response.json();
-
-        if (
-          response.status === 401 &&
-          errorResponse.errorType === "INVALID_CREDENTIAL"
-        ) {
-          setErrorMessage(errorResponse.error);
-          setShowPopup(true);
-          startProgressCountdown();
-
-          errorTimeout = setTimeout(() => {
-            setShowPopup(false);
-            setErrorMessage("");
-          }, 1500);
-        }
-
-        if (
-          response.status === 400 &&
-          errorResponse.errorType === "VALIDATION_ERROR"
-        ) {
-          setUserNameError(errorResponse.error.userName);
-          setPasswordError(errorResponse.error.password);
-        }
-
-        throw new Error(errorResponse.errorType || "Unauthorized");
-      }
-
-      const data = await response.json();
-      console.log("Login successful:", data);
-      setErrorMessage("");
-      // Handle successful login actions here (e.g., store tokens, redirect)
-    } catch (error) {
-      console.error(error.message);
-    } finally {
-      setLoading(false);
-      setTimeout(() => {
-        setUserNameError(undefined);
-        setPasswordError(undefined);
-      }, 3000);
-    }
+        return response.json();
+      })
+      .then((data) => {
+        setErrorMessage("");
+        if (data.userId === userName) dispatch(authActions.setAuthStatus(true));
+        else dispatch(authActions.setAuthStatus(false));
+        navigate("/home");
+      })
+      .catch((error) => {
+        console.error(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+        setTimeout(() => {
+          setUserNameError(undefined);
+          setPasswordError(undefined);
+        }, 1500);
+      });
   };
 
   useEffect(() => {
-    return () => clearTimeout(errorTimeout);
-  }, [errorTimeout]);
+    // Clear the timeout if the component unmounts
+    return () => clearTimeout(errorTimeout.current);
+  }, []);
 
   return (
     <>
