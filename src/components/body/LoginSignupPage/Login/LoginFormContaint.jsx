@@ -3,7 +3,7 @@ import styles from "./LoginFormContaint.module.css";
 import { TextField, LinearProgress } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../../../store/authSlice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const LoginFormContaint = ({ theme }) => {
   const userNameRef = useRef(null);
@@ -11,6 +11,7 @@ export const LoginFormContaint = ({ theme }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -78,7 +79,7 @@ export const LoginFormContaint = ({ theme }) => {
         setErrorMessage("");
         if (data.userId === userName) dispatch(authActions.setAuthStatus(true));
         else dispatch(authActions.setAuthStatus(false));
-        navigate("/home");
+        navigate(location.state?.from?.pathname || "/home");
       })
       .catch((error) => {
         console.error(error.message);

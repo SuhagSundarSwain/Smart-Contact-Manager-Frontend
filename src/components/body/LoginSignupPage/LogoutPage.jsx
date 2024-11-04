@@ -1,10 +1,16 @@
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../../store/authSlice";
 
 const LogoutPage = () => {
   const dispatch = useDispatch();
-  dispatch(authActions.setLogout());
-  return <>you have been logged out successfully.</>;
+
+  useEffect(() => {
+    // Dispatch the logout action only once when the component mounts
+    dispatch(authActions.setLogout());
+  }, [dispatch]);
+
+  return <>You have been logged out successfully.</>;
 };
 
 export default LogoutPage;
