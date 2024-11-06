@@ -7,6 +7,7 @@ import { themeActions } from "./store/themeSlice";
 import { useEffect } from "react";
 import { authActions } from "./store/authSlice";
 
+
 const App = () => {
   const dispatch = useDispatch();
   const loaderData = useLoaderData(); // Get data from loader

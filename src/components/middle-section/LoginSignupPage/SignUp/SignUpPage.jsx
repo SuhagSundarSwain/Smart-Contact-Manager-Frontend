@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { SignUpFormContaint } from "./SignUpFormContaint";
 import styles from "./SignUpPage.module.css";
 
-export const SignUpPage = () => {
+const SignUpPage = () => {
   const theme = useSelector((store) => store.theme);
 
   return (
@@ -17,3 +17,5 @@ export const SignUpPage = () => {
     </div>
   );
 };
+
+export default SignUpPage;

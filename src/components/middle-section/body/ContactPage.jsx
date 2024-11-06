@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
-export const ContactPage = () => {
+const ContactPage = () => {
   const loaderData = useLoaderData();
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,3 +15,5 @@ export const ContactPage = () => {
 
   return <div>ContactPage</div>;
 };
+
+export default ContactPage;

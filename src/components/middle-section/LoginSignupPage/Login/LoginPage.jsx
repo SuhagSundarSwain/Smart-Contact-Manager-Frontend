@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { LoginFormContaint } from "./LoginFormContaint";
 import styles from "./LoginPage.module.css";
 
-export const LoginPage = () => {
+const LoginPage = () => {
   const theme = useSelector((store) => store.theme);
 
   return (
@@ -17,3 +17,5 @@ export const LoginPage = () => {
     </div>
   );
 };
+
+export default LoginPage;

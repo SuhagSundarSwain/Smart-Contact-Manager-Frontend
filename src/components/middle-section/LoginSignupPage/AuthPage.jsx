@@ -2,7 +2,7 @@ import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import styles from "./AuthPage.module.css";
 import { useEffect } from "react";
 
-export const AuthPage = () => {
+const AuthPage = () => {
   const loaderData = useLoaderData();
   const navigate = useNavigate();
 
@@ -19,3 +19,5 @@ export const AuthPage = () => {
     </div>
   );
 };
+
+export default AuthPage;

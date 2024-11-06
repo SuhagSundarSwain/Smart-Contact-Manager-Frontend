@@ -33,12 +33,15 @@ export const loginStatusLoader = async () => {
   })
     .then((response) => {
       if (!response.ok) {
+        if (response.status === 403) {
+          return { status: false };
+        }
         throw new Error("Something went wrong");
       }
       return response.json();
     })
     .then((data) => data)
     .catch((error) => {
-      return { status: false };
+      console.error(error);
     });
 };
