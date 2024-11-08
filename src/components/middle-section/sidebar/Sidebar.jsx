@@ -3,9 +3,15 @@ import Dashboard from "@mui/icons-material/Dashboard";
 import Contacts from "@mui/icons-material/Contacts";
 import AddContact from "@mui/icons-material/AddIcCall";
 import { useState } from "react";
+import styles from "./Sidebar.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { sidebarActions } from "../../../store/sidebarSlice";
 
 const Sidebar = () => {
+  const theme = useSelector((store) => store.theme);
+  const sidebar = useSelector((store) => store.sidebar);
   const [sideBarExpand, setSideBarExpand] = useState(false);
+  const dispatch = useDispatch();
   const sideBarList = [
     { name: "Dashboard", icon: <Dashboard /> },
     { name: "Contacts", icon: <Contacts /> },
@@ -14,8 +20,14 @@ const Sidebar = () => {
 
   return (
     <div
-      className="d-flex flex-column flex-shrink-0 bg-body-tertiary"
-      style={{ width: sideBarExpand ? "18.5rem" : "4.5rem", height: "80vh" }}
+      className={`d-flex flex-column flex-shrink-0 ${
+        theme.lightTheme ? styles.sidebar_light : styles.sidebar_dark
+      }`}
+      style={{
+        width: sideBarExpand ? "15.5rem" : "4.5rem",
+      }}
+      onMouseEnter={() => setSideBarExpand(true)}
+      onMouseLeave={() => setSideBarExpand(false)}
     >
       <a
         className="d-block p-3 link-body-emphasis text-decoration-none"
@@ -28,10 +40,17 @@ const Sidebar = () => {
       </a>
       <ul className="nav nav-pills nav-flush flex-column mb-auto">
         {sideBarList.map((tab, index) => (
-          <li className="nav-item" key={index}>
+          <li
+            className="nav-item"
+            key={index}
+            onClick={() => {
+              dispatch(sidebarActions.setTab({tab:tab.name}))
+            }}
+          >
             <a
-              href="/"
               className={`nav-link py-3 border-bottom rounded-0 d-flex align-items-center ${
+                sidebar.current_tab === tab.name ? "active" : ""
+              } ${
                 sideBarExpand
                   ? "justify-content-start"
                   : "justify-content-center"
