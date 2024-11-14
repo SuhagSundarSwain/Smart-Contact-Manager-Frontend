@@ -6,6 +6,7 @@ import { useState } from "react";
 import styles from "./Sidebar.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { sidebarActions } from "../../../store/sidebarSlice";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const theme = useSelector((store) => store.theme);
@@ -44,10 +45,11 @@ const Sidebar = () => {
             className="nav-item"
             key={index}
             onClick={() => {
-              dispatch(sidebarActions.setTab({tab:tab.name}))
+              dispatch(sidebarActions.setTab({ tab: tab.name }));
             }}
           >
-            <a
+            <Link
+              to={`/user/${tab.name.toLowerCase()}`}
               className={`nav-link py-3 border-bottom rounded-0 d-flex align-items-center ${
                 sidebar.current_tab === tab.name ? "active" : ""
               } ${
@@ -62,7 +64,7 @@ const Sidebar = () => {
             >
               {tab.icon}
               {sideBarExpand && <span className="ms-2">{tab.name}</span>}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
