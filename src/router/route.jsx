@@ -11,12 +11,15 @@ import LoginPage from "../components/middle-section/LoginSignupPage/Login/LoginP
 import SignUpPage from "../components/middle-section/LoginSignupPage/SignUp/SignUpPage";
 import LogoutPage from "../components/middle-section/LoginSignupPage/LogoutPage";
 import User from "../components/middle-section/body/user/User";
+import Dashboard from "../components/middle-section/body/user/Dashboard/Dashboard";
+import Contacts from "../components/middle-section/body/user/Contacts/Contacts";
+import AddContact from "../components/middle-section/body/user/Add_Contact/AddContact";
 
 // Define user-related routes as a separate constant for readability
 const userRoutes = [
-  { path: "dashboard", element: <>Dashboard</> },
-  { path: "contacts", element: <>Contacts</> },
-  { path: "add contact", element: <>Add Contact</> },
+  { path: "dashboard", element: <Dashboard /> },
+  { path: "contacts", element: <Contacts /> },
+  { path: "add contact", element: <AddContact /> },
 ];
 
 // Define auth-related routes as a separate constant for readability

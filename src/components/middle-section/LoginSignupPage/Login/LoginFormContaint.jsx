@@ -89,7 +89,7 @@ export const LoginFormContaint = ({ theme }) => {
         setTimeout(() => {
           setUserNameError(undefined);
           setPasswordError(undefined);
-        }, 2000);
+        }, 3000);
       });
   };
 

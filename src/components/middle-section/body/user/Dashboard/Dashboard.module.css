@@ -1,0 +1,25 @@
+.dashboard {
+  margin: 0 50px;
+}
+
+.dashboard_cards {
+  display: flex;
+}
+
+.card {
+  margin-top: 50px;
+  margin-right: 50px;
+  padding: 10px;
+  padding-left: 20px;
+  width: 23rem;
+}
+
+.card_upper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_middle {
+  font-weight: bold;
+  margin-bottom: 0;
+}
