@@ -20,8 +20,7 @@ const AddContact = () => {
         </div>
 
         <p style={{ color: "grey" }}>
-          The contact will save and you can access from anywhere and can send
-          email.
+          The contact will save and you can access from anywhere and can send email.
         </p>
         <AddContactForm />
       </div>

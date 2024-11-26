@@ -12,26 +12,31 @@ const AddContactForm = () => {
       label: "Contact Name",
       text_field_icon: <PersonOutlineOutlinedIcon />,
       placeholder: "Enter contact name",
+      inputType:"text"
     },
     {
       label: "Contact Email",
       text_field_icon: <EmailOutlinedIcon />,
       placeholder: "Enter contact email",
+      inputType:"email"
     },
     {
       label: "Contact Phone",
       text_field_icon: <CallOutlinedIcon />,
       placeholder: "Enter contact phone/mobile number",
+      inputType:"number"
     },
     {
       label: "Contact Address",
       type: "textarea",
       placeholder: "Enter contact address",
+      inputType:"text"
     },
     {
       label: "Contact Description",
       type: "textarea",
       placeholder: "Enter contact details/description.",
+      inputType:"text"
     },
   ];
   return (
@@ -69,6 +74,7 @@ const AddContactForm = () => {
                   : styles.textField_dark
               }`}
               style={{ marginBottom: "20px" }}
+             type={field.inputType}
             />
           )}
         </div>
