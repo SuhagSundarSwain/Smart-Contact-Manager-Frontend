@@ -44,14 +44,14 @@ const Sidebar = () => {
           <li
             className="nav-item"
             key={index}
-            onClick={() => {
-              dispatch(sidebarActions.setTab({ tab: tab.name }));
-            }}
+            onClick={() => dispatch(sidebarActions.setTab({ tab: tab.name }))}
           >
             <Link
               to={`/user/${tab.name.toLowerCase()}`}
               className={`nav-link py-3 border-bottom rounded-0 d-flex align-items-center ${
-                sidebar.current_tab === tab.name ? "active" : ""
+                sidebar.current_tab === tab.name
+                  ? styles.sidebar_tab_select
+                  : styles.sidebar_tabs
               } ${
                 sideBarExpand
                   ? "justify-content-start"

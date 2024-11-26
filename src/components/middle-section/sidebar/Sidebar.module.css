@@ -3,7 +3,7 @@
   color: #ffffff; /* Set the desired text color */
 }
 .sidebar_dark {
-  background-color: #4a4a4a;
+  background-color: #1f2937;
   color: black;
 }
 
@@ -16,9 +16,18 @@
 }
 
 .nav-link {
-  color: inherit; /* Ensure link text color matches sidebar text color */
+  color: inherit; 
 }
 
 .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.1); /* Optional hover effect */
+}
+
+.sidebar_tabs {
+  color: black;
+}
+
+.sidebar_tab_select {
+  color: white;
+  background-color: black;
 }
