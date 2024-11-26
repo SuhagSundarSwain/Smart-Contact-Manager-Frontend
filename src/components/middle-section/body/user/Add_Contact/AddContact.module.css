@@ -1,0 +1,36 @@
+.addContact {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  height: 100%;
+}
+
+.form_title {
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+}
+
+
+.addContactForm {
+  grid-column: 2;
+  border: 2px solid;
+  border-radius: 20px;
+  padding: 30px 50px;
+}
+
+.addContactForm_light {
+  border-color: white;
+  background-color: white;
+}
+
+.addContactForm_dark {
+  border-color: black;
+  background-color: black;
+}
+
+.addContactForm_light:hover {
+  background-color: rgb(211, 211, 211);
+}
+.addContactForm_dark:hover {
+  background-color: rgb(20, 20, 20);
+}

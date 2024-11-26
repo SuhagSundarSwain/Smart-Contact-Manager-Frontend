@@ -1,0 +1,34 @@
+.field_label {
+  font-weight: 500;
+}
+
+.textField {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.textField_light {
+  background-color: white;
+  color: black;
+}
+
+.textField_dark {
+  background-color: rgb(50, 50, 50);
+  color: white;
+}
+
+.textField_light,
+.textField_dark {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.textField_dark input {
+  color: white;
+}
+
+.button_container {
+  margin: 50px 0px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
