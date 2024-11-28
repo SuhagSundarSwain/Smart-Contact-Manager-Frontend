@@ -3,7 +3,7 @@
   color: #ffffff; /* Set the desired text color */
 }
 .sidebar_dark {
-  background-color: #1f2937;
+  background-color: #2a3748;
   color: black;
 }
 
@@ -12,7 +12,7 @@
   height: 90vh;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color 0.5s ease, color 0.5s ease ,width 0.195s;
 }
 
 .nav-link {
@@ -24,7 +24,7 @@
 }
 
 .sidebar_tabs {
-  color: black;
+  color: rgb(0, 0, 0);
 }
 
 .sidebar_tab_select {
