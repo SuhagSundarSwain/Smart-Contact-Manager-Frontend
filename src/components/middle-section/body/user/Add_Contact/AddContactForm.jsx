@@ -44,7 +44,7 @@ const AddContactForm = () => {
       {form_fields.map((field) => (
         <div key={field.label}>
           <label className={styles.field_label}>{field.label + ":"}</label>
-          {field.type == "textarea" ? (
+          {field.type === "textarea" ? (
             <textarea
               className={`${styles.textField} ${
                 theme.lightTheme

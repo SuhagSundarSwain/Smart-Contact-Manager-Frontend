@@ -1,0 +1,62 @@
+.contact_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+  width: 100%;
+}
+
+.contacts_table {
+  width: 80%;
+  border-collapse: collapse; /* Ensures rounded corners work properly */
+  border-radius: 15px; /* Rounded corners for the table */
+  overflow: hidden; /* Ensures the content inside respects the border radius */
+  margin-top: 20px; /* Adds some spacing from the heading */
+}
+
+.contacts_table_light {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow around the table */
+}
+.contacts_table_dark {
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2); /* Soft shadow around the table */
+}
+
+.contacts_table th,
+.contacts_table td {
+  /* border: 1px solid rgba(0, 0, 0, 0.2);  */
+  padding: 10px;
+  padding-left: 50px;
+}
+
+.center_align_text {
+  text-align: center;
+}
+
+.contacts_table th {
+  font-weight: bold; /* Bold text for header cells */
+}
+
+.contacts_table_light th {
+  background-color: #dddddd;
+}
+
+.contacts_table_dark th {
+  background-color: #000000;
+}
+
+.contacts_table_dark tr {
+  background-color: rgb(31, 31, 31);
+}
+
+.contacts_table tr:hover {
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.contacts_table_light tr:hover {
+  background-color: #e5e5e5;
+}
+
+.contacts_table_dark tr:hover {
+  background-color: rgb(25, 25, 25);
+}
