@@ -4,12 +4,16 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import LoadingSpinner from "../../../Spinner/LoadingSpinner";
 
 const Contacts = () => {
   const [contactList, setContactList] = useState([]);
   const theme = useSelector((store) => store.theme);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    setLoading(true);
     fetch(
       process.env.REACT_APP_SCM_BACKEND_SERVER + "/user/contacts/all-contacts",
       {
@@ -25,15 +29,24 @@ const Contacts = () => {
 
         return response.json();
       })
-      .then((data) => setContactList(data))
-      .catch((error) => console.error(error.message));
+      .then((data) => {
+        setContactList(data);
+      })
+      .catch((error) => console.error(error.message))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
     <div className={styles.contact_header}>
       <h2>All your contacts</h2>
       <p>List of all Contacts...</p>
-      <table className={`${styles.contacts_table} ${theme.lightTheme?styles.contacts_table_light:styles.contacts_table_dark}`}>
+      <table
+        className={`${styles.contacts_table} ${
+          theme.lightTheme
+            ? styles.contacts_table_light
+            : styles.contacts_table_dark
+        }`}
+      >
         <thead>
           <tr>
             <th>Name</th>
@@ -43,23 +56,31 @@ const Contacts = () => {
           </tr>
         </thead>
         <tbody>
-          {contactList.map((contact, index) => (
-            <tr key={index}>
-              <td>{contact.name}</td>
-              <td className={styles.center_align_text}>
-                <LocalPhoneRoundedIcon />
-                {contact.phone}
-              </td>
-              <td className={styles.center_align_text}>
-                <EmailOutlinedIcon />
-                {contact.email}
-              </td>
-              <td className={styles.center_align_text}>
-                <DeleteIcon />
-                {contact.actions}
+          {loading ? (
+            <tr>
+              <td colSpan="4">
+                <LoadingSpinner />
               </td>
             </tr>
-          ))}
+          ) : (
+            contactList.map((contact, index) => (
+              <tr key={index}>
+                <td>{contact.name}</td>
+                <td className={styles.center_align_text}>
+                  <LocalPhoneRoundedIcon />
+                  {contact.phone}
+                </td>
+                <td className={styles.center_align_text}>
+                  <EmailOutlinedIcon />
+                  {contact.email}
+                </td>
+                <td className={styles.center_align_text}>
+                  <DeleteIcon />
+                  {contact.actions}
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
