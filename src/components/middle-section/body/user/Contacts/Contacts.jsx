@@ -2,39 +2,15 @@ import styles from "./Contacts.module.css";
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { useSelector } from "react-redux";
 import LoadingSpinner from "../../../Spinner/LoadingSpinner";
+import { ContactsContext } from "../../../../../store/context-store/Contacts-Context-store";
 
 const Contacts = () => {
-  const [contactList, setContactList] = useState([]);
-  const theme = useSelector((store) => store.theme);
-
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-    fetch(
-      process.env.REACT_APP_SCM_BACKEND_SERVER + "/user/contacts/all-contacts",
-      {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Something went wrong on fetch contacts.");
-        }
-
-        return response.json();
-      })
-      .then((data) => {
-        setContactList(data);
-      })
-      .catch((error) => console.error(error.message))
-      .finally(() => setLoading(false));
-  }, []);
+  const { lightTheme } = useSelector((store) => store.theme);
+  const { contactList, contactLoading, deleteContact } =
+    useContext(ContactsContext);
 
   return (
     <div className={styles.contact_header}>
@@ -42,9 +18,7 @@ const Contacts = () => {
       <p>List of all Contacts...</p>
       <table
         className={`${styles.contacts_table} ${
-          theme.lightTheme
-            ? styles.contacts_table_light
-            : styles.contacts_table_dark
+          lightTheme ? styles.contacts_table_light : styles.contacts_table_dark
         }`}
       >
         <thead>
@@ -56,9 +30,9 @@ const Contacts = () => {
           </tr>
         </thead>
         <tbody>
-          {loading ? (
+          {contactLoading ? (
             <tr>
-              <td colSpan="4">
+              <td colSpan="4" className={styles.center_align_text}>
                 <LoadingSpinner />
               </td>
             </tr>
@@ -75,7 +49,7 @@ const Contacts = () => {
                   {contact.email}
                 </td>
                 <td className={styles.center_align_text}>
-                  <DeleteIcon />
+                  <DeleteIcon onClick={() => deleteContact(contact)} />
                   {contact.actions}
                 </td>
               </tr>
