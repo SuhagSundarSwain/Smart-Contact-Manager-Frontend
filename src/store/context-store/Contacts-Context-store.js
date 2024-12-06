@@ -5,7 +5,7 @@ import { fetchAddContact, fetchContact } from "./fetchFunctions";
 export const ContactsContext = createContext({
   contactList: [],
   contactLoading: false,
-  addContact: () => {},
+  addContact: async () => {},
   addContactLoading: false,
   addContactError: {},
   deleteContact: () => {},
@@ -26,18 +26,25 @@ const ContactsContextProvider = ({ children }) => {
     })();
   }, []);
 
-  const addContact = (contact) => {
+  const addContact = async (contact) => {
     setAddContactLoading(true);
-    (async () => {
+    try {
       const res = await fetchAddContact(contact);
       if (res?.status === 201) {
         dispatchContactList({ type: "ADD_CONTACT", payload: res.data });
+        setAddContactLoading(false);
+        return true; // Return success
       } else {
         setAddContactError(res?.error || {});
-        setTimeout(() => setAddContactError({}), 2500);
+        setTimeout(() => setAddContactError({}), 3000);
+        setAddContactLoading(false);
+        return false; // Return failure
       }
+    } catch (error) {
       setAddContactLoading(false);
-    })();
+      console.error("Error adding contact:", error);
+      return false;
+    }
   };
 
   const deleteContact = (contact) => {

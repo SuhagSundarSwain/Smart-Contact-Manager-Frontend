@@ -24,7 +24,7 @@ const themeSlice = createSlice({
           return response.json();
         })
         .then((data) => {
-          console.log("current theme: ", data.theme);
+          // console.log("current theme: ", data.theme);
         })
         .catch((error) => {
           console.error("Error updating theme:", error);

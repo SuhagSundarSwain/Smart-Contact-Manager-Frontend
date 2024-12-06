@@ -8,18 +8,21 @@ export const form_fields = [
     text_field_icon: <PersonOutlineOutlinedIcon />,
     placeholder: "Enter contact name",
     inputType: "text",
+    required: true,
   },
   {
     label: "email",
     text_field_icon: <EmailOutlinedIcon />,
     placeholder: "Enter contact email",
     inputType: "email",
+    required: true,
   },
   {
     label: "phone",
     text_field_icon: <CallOutlinedIcon />,
     placeholder: "Enter contact phone/mobile number",
     inputType: "number",
+    required: true,
   },
   {
     label: "address",
