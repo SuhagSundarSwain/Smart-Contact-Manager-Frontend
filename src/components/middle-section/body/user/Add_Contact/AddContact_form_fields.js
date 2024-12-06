@@ -4,31 +4,31 @@ import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 
 export const form_fields = [
   {
-    label: "Name",
+    label: "name",
     text_field_icon: <PersonOutlineOutlinedIcon />,
     placeholder: "Enter contact name",
     inputType: "text",
   },
   {
-    label: "Email",
+    label: "email",
     text_field_icon: <EmailOutlinedIcon />,
     placeholder: "Enter contact email",
     inputType: "email",
   },
   {
-    label: "Phone",
+    label: "phone",
     text_field_icon: <CallOutlinedIcon />,
     placeholder: "Enter contact phone/mobile number",
     inputType: "number",
   },
   {
-    label: "Address",
+    label: "address",
     type: "textarea",
     placeholder: "Enter contact address",
     inputType: "text",
   },
   {
-    label: "Description",
+    label: "description",
     type: "textarea",
     placeholder: "Enter contact details/description.",
     inputType: "text",

@@ -3,9 +3,9 @@ import "./App.css";
 import { Header } from "./components/header/Header";
 import { Footer } from "./components/footer/Footer";
 import { Outlet, useLoaderData } from "react-router-dom"; // Import useLoaderData
-import { themeActions } from "./store/themeSlice";
 import { useEffect } from "react";
-import { authActions } from "./store/authSlice";
+import { authActions } from "./store/redux-store/authSlice";
+import { themeActions } from "./store/redux-store/themeSlice";
 
 const App = () => {
   const dispatch = useDispatch();

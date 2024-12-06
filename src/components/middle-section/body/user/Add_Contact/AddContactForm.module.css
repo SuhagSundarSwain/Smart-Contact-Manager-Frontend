@@ -26,6 +26,11 @@
   color: white;
 }
 
+.addContact {
+  color: blue;
+  font-size: large;
+}
+
 .button_container {
   margin: 50px 0px;
   display: flex;

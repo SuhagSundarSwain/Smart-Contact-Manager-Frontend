@@ -1,7 +1,7 @@
 .addContact {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  height: 100%;
+  height: 90%;
 }
 
 .form_title {

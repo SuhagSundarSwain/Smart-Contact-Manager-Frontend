@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { authActions } from "../../../store/authSlice";
+import { authActions } from "../../../store/redux-store/authSlice";
 
 const LogoutPage = () => {
   const dispatch = useDispatch();

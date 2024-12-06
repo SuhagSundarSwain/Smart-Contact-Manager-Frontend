@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./HeaderRightSection.module.css";
 import ContrastIcon from "@mui/icons-material/Contrast";
-import { themeActions } from "../../../store/themeSlice";
+import { themeActions } from "../../../store/redux-store/themeSlice";
 import { useNavigate } from "react-router-dom";
 
 export const HeaderRightSection = () => {

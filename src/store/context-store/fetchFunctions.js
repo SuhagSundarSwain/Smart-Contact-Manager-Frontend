@@ -20,3 +20,28 @@ export const fetchContact = async () => {
     return [];
   }
 };
+
+export const fetchAddContact = async (contact) => {
+  try {
+    const response = await fetch(
+      process.env.REACT_APP_SCM_BACKEND_SERVER + "/user/contacts/add",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(contact),
+      }
+    );
+    if (!response.ok) {
+      if (response.status === 400 || response.status === 409) {
+        const res = await response.json();
+        return { status: response.status, error: res.error };
+      }
+      throw new Error("Something went wrong while adding contact.");
+    }
+    const data = await response.json();
+    return { status: response.status, data };
+  } catch (error) {
+    console.error(error.message);
+  }
+};

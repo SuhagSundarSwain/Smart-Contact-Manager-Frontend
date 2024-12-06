@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import styles from "./LoginFormContaint.module.css";
 import { TextField, LinearProgress } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { authActions } from "../../../../store/authSlice";
+import { authActions } from "../../../../store/redux-store/authSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const LoginFormContaint = ({ theme }) => {

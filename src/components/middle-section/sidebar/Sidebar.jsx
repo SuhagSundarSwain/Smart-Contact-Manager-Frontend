@@ -5,7 +5,7 @@ import AddContact from "@mui/icons-material/AddIcCall";
 import { useState } from "react";
 import styles from "./Sidebar.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { sidebarActions } from "../../../store/sidebarSlice";
+import { sidebarActions } from "../../../store/redux-store/sidebarSlice";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
