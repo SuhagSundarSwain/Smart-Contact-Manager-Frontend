@@ -1,14 +1,20 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 import { ContactListReducer } from "./ContactListReducer";
-import { fetchAddContact, fetchContact } from "./fetchFunctions";
+import {
+  fetchAddContact,
+  fetchContact,
+  fetchDeleteContact,
+} from "./fetchFunctions";
 
 export const ContactsContext = createContext({
   contactList: [],
   contactLoading: false,
+
   addContact: async () => {},
   addContactLoading: false,
   addContactError: {},
-  deleteContact: () => {},
+
+  deleteContact: async () => {},
 });
 
 const ContactsContextProvider = ({ children }) => {
@@ -47,8 +53,14 @@ const ContactsContextProvider = ({ children }) => {
     }
   };
 
-  const deleteContact = (contact) => {
-    dispatchContactList({ type: "DELETE_CONTACT", payload: contact });
+  const deleteContact = async (contact) => {
+    const res = await fetchDeleteContact(contact.id);
+    if (res.status) {
+      dispatchContactList({ type: "DELETE_CONTACT", payload: contact });
+      return true;
+    } else {
+      return false;
+    }
   };
 
   return (

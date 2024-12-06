@@ -32,7 +32,7 @@ const AddContactForm = () => {
     const success = await addContact(formData);
 
     if (success) {
-      toast.success("Contact added successfully!", {
+      toast.success(`${formData.name} Contact added successfully!`, {
         position: "top-center",
         autoClose: 2500,
         icon: "✅",
@@ -40,6 +40,7 @@ const AddContactForm = () => {
       setFormData(
         form_fields.reduce((acc, field) => {
           acc[field.label] = "";
+          setSaveContact(false);
           return acc;
         }, {})
       );
@@ -127,6 +128,7 @@ const AddContactForm = () => {
               setFormData(
                 form_fields.reduce((acc, field) => {
                   acc[field.label] = "";
+                  setSaveContact(false);
                   return acc;
                 }, {})
               )

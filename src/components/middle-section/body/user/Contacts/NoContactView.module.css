@@ -1,0 +1,14 @@
+.NCV {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  justify-content: center;
+  align-items: center;
+}
+.add_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  width: 40%;
+}

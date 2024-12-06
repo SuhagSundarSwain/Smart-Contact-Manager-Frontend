@@ -45,3 +45,25 @@ export const fetchAddContact = async (contact) => {
     console.error(error.message);
   }
 };
+
+export const fetchDeleteContact = async (id) => {
+  try {
+    const response = await fetch(
+      process.env.REACT_APP_SCM_BACKEND_SERVER + `/user/contacts/contact/${id}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      }
+    );
+    if (!response.ok) {
+      const res = await response.json();
+      if (response.status === 404) return { status: false, error: res.error };
+      throw new Error("Something went wrong during delete Contact.");
+    }
+    return { status: true };
+  } catch (error) {
+    console.log(error.message);
+    return { status: false };
+  }
+};
