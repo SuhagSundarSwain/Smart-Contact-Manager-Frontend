@@ -44,7 +44,7 @@ const Sidebar = () => {
           <li
             className="nav-item"
             key={index}
-            onClick={() => dispatch(sidebarActions.setTab({ tab: tab.name }))}
+            // onClick={() => dispatch(sidebarActions.setTab({ tab: tab.name }))}
           >
             <Link
               to={`/user/${tab.name.toLowerCase()}`}

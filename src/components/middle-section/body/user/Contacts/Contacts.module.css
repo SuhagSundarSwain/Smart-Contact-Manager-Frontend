@@ -25,7 +25,7 @@
 .contacts_table th,
 .contacts_table td {
   /* border: 1px solid rgba(0, 0, 0, 0.2);  */
-  padding: 10px;
+  padding: 15px;
   padding-left: 50px;
 }
 
@@ -59,4 +59,9 @@
 
 .contacts_table_dark tr:hover {
   background-color: rgb(25, 25, 25);
+}
+
+.AddButton {
+  width: 10%;
+  align-self: end;
 }

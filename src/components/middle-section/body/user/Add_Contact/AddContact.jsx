@@ -3,12 +3,14 @@ import styles from "./AddContact.module.css";
 import AddContactForm from "./AddContactForm";
 import PersonIcon from "@mui/icons-material/Person";
 import { sidebarActions } from "../../../../../store/redux-store/sidebarSlice";
+import { useEffect } from "react";
 
 const AddContact = () => {
   const theme = useSelector((store) => store.theme);
   const dispatch = useDispatch();
-  dispatch(sidebarActions.setTab({ tab: "Add Contact" }));
-
+  useEffect(() => {
+    dispatch(sidebarActions.setTab({ tab: "Add Contact" }));
+  }, []);
   return (
     <div className={styles.addContact}>
       <div
