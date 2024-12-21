@@ -24,6 +24,9 @@ const Sidebar = () => {
       }`}
       style={{
         width: sideBarExpand ? "15.5rem" : "4.5rem",
+        position: "fixed",
+        zIndex:"1000",
+        marginTop:"10px"
       }}
       onMouseEnter={() => setSideBarExpand(true)}
       onMouseLeave={() => setSideBarExpand(false)}

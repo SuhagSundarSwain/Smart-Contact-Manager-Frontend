@@ -1,5 +1,6 @@
 .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Divides into 3 equal sections */
-    height: 100vh; /* Full viewport height */
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Divides into 3 equal sections */
+  height: 100vh; /* Full viewport height */
+  margin-top: 10px;
+}

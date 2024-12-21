@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./HeadingSection.module.css";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const HeadingSection = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.heading_section}>
       <h1 className={styles.heading_tag}>
@@ -13,7 +15,11 @@ const HeadingSection = () => {
         with Smart Contacts - the ultimate solution for modern professionals.
       </p>
       <div className={styles.button_Container}>
-        <button type="button" className="btn btn-dark">
+        <button
+          type="button"
+          className="btn btn-dark"
+          onClick={() => navigate("/user/dashboard")}
+        >
           Get Started <ArrowForwardIcon />
         </button>
         <button type="button" className="btn btn-light">

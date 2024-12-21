@@ -7,14 +7,12 @@ export const Header = () => {
   const theme = useSelector((store) => store.theme);
   return (
     <header
-      className={`d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-0 ${
+      className={`fixed-header d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-0 ${
         theme.lightTheme ? "border-bottom" : ""
       }`}
     >
       <LogoSection />
-
       <HeaderContentSection />
-
       <HeaderRightSection />
     </header>
   );

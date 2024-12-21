@@ -1,0 +1,24 @@
+.rgs_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  text-align: center;
+  justify-content: space-around;
+  gap: 20px;
+  background: linear-gradient(
+    to right,
+    rgb(240, 240, 255) 10%,
+    rgb(250, 250, 255) 50%,
+    rgb(240, 240, 255) 100%
+  );
+}
+
+.rgs_subtitle {
+  width: 50%;
+  font-size: large;
+  font-weight: 450;
+  color: gray;
+  margin: 0;
+  line-height: 1;
+}
