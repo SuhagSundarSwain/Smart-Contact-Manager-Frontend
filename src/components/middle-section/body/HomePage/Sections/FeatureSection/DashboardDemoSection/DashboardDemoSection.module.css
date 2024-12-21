@@ -1,0 +1,32 @@
+.Dashboard_Demo_Section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    to top,
+    rgb(230, 230, 255) 10%,
+    rgb(240, 240, 255) 50%,
+    white 100%
+  );
+  padding: 20px;
+}
+
+.dashboard_demo_video {
+  width: 70%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 5% 15%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.dashboard_demo_video:hover {
+  transform: scale(1.05);
+}
+
+.dashboard_demo_right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

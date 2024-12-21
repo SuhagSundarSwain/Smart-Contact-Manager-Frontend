@@ -1,0 +1,17 @@
+.pricing_card {
+  width: 21rem;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out, border 0.2s ease;
+}
+
+.pricing_card:hover {
+  transform: scale(1.1);
+  border: 1px solid blue;
+}
+
+.pricing_card_body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}

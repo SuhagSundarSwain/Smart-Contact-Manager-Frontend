@@ -17,3 +17,17 @@
   gap: 70px;
   margin-top: 30px;
 }
+@media (max-width: 768px) {
+  .feature_Card_Section {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 cards per row for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .feature_Card_Section {
+    grid-template-columns: 1fr; /* 1 card per row for mobile screens */
+  }
+}
