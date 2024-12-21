@@ -1,0 +1,38 @@
+.heading_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 50px 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(230, 230, 255) 10%,
+    rgb(240, 240, 255) 50%,
+    white 100%
+  );
+}
+
+.heading_tag {
+  width: 90%;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.sub_heading_tag {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  color: rgba(75, 85, 98, 1);
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+.button_Container {
+  /* margin-top: 20px; */
+  width: 18%;
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+}

@@ -2,7 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "../App";
 import { combineLoader, loginStatusLoader } from "./loader";
 import MiddleSection from "../components/middle-section/MiddleSection";
-import HomePage from "../components/middle-section/body/HomePage";
+import HomePage from "../components/middle-section/body/HomePage/HomePage";
 import AboutPage from "../components/middle-section/body/AboutPage";
 import ServicePage from "../components/middle-section/body/ServicePage";
 import ContactPage from "../components/middle-section/body/ContactPage";

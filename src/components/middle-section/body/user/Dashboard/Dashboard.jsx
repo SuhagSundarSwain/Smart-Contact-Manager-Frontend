@@ -10,7 +10,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(sidebarActions.setTab({ tab: "Dashboard" }));
-  }, []);
+  }, [dispatch]);
   return (
     <div className={styles.dashboard}>
       <h2>Welcome to Dashboard</h2>

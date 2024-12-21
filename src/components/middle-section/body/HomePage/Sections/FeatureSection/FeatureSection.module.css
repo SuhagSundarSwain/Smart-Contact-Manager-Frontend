@@ -1,0 +1,19 @@
+.feature_Section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  background: linear-gradient(
+    to right,
+    rgb(240, 240, 255) 10%,
+    rgb(250, 250, 255) 50%,
+    rgb(240, 240, 255) 100%
+  );
+}
+.feature_Card_Section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 70px;
+  margin-top: 30px;
+}
