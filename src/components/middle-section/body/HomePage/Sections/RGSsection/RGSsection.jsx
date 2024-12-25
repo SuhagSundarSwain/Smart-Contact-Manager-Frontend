@@ -2,7 +2,7 @@ import { Button, TextField } from "@mui/material";
 import styles from "./RGSsection.module.css";
 const RGSsection = () => {
   return (
-    <div className={styles.rgs_section}>
+    <div id="rgs" className={styles.rgs_section}>
       <h2>Ready to Get Started?</h2>
       <p className={styles.rgs_subtitle}>
         Join thousands of satisfied users and take control of your contacts

@@ -6,8 +6,7 @@ import DashboardDemoSection from "./DashboardDemoSection/DashboardDemoSection";
 const FeatureSection = () => {
   return (
     <>
-      {" "}
-      <div className={styles.feature_Section}>
+      <div id="features" className={styles.feature_Section}>
         <h2>Powerful Features</h2>
         <div className={styles.feature_Card_Section}>
           {FeatureCardList.map(({ logo, title, subtitle }, index) => (

@@ -11,7 +11,7 @@ import faqsList from "./FAQsList";
 
 const FAQSection = () => {
   return (
-    <div className={styles.faq_section}>
+    <div id="faqs" className={styles.faq_section}>
       <h2>Frequently Asked Questions</h2>
       <div className={styles.faq_container}>
         {faqsList.map(({ question, answer }, index) => (

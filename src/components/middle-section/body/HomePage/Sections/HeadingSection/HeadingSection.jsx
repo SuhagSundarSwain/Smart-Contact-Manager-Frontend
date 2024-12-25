@@ -5,7 +5,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 const HeadingSection = () => {
   const navigate = useNavigate();
   return (
-    <div className={styles.heading_section}>
+    <div id="home" className={styles.heading_section}>
       <h1 className={styles.heading_tag}>
         Revolutionize Your{" "}
         <span style={{ color: "blue" }}>Contact Management</span>

@@ -4,11 +4,12 @@ import pricingPlanList from "./PricingPlansLists";
 
 const PricingPlanSection = () => {
   return (
-    <div className={styles.pricing_plan_section}>
+    <div id="pricing" className={styles.pricing_plan_section}>
       <h2>Flexible Pricing Plans</h2>
       <div className={styles.price_cards}>
         {pricingPlanList.map(({ title, priceRate, benefits }) => (
           <PricingCard
+            key={title}
             title={title}
             priceRate={priceRate}
             benefits={benefits}

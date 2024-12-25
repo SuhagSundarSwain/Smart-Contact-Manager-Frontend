@@ -11,8 +11,8 @@ const PricingCard = ({ title, priceRate, benefits }) => {
           <span style={{ fontSize: "medium" }}>month</span>
         </h2>
 
-        {benefits.map((benefit) => (
-          <p className="card-text">
+        {benefits.map((benefit, index) => (
+          <p className="card-text" key={index}>
             <DoneOutlined fontSize="small" color="success" /> {benefit}
           </p>
         ))}
